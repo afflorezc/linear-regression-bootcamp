@@ -27,7 +27,7 @@ with steps[0]:
     valor_ipc_pred = valor_ipc_pred[0][0]
     st.button("Calcular IPC", key="calcular")
 
-    if st.session_state["calcular"]: st.write(f"El IPC predicho para el año {year} es {valor_ipc_pred:2f}")
+    if st.session_state["calcular"]: st.write(f"El IPC predicho para el año {year} es {valor_ipc_pred:.2f}")
 
 with steps[1]:
 
