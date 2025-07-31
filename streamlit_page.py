@@ -16,12 +16,15 @@ st.set_page_config(page_title="ML Regresión Lineal: Minimos cuadrados",layout="
 
 st.title("Modelo de Machine Learning")
 st.subheader("Regresión Lineal: Mínimos cuadrados")
-steps = st.tabs(["Funcionamiento","Predecir IPC anual","Ver evolución"])
+steps = st.tabs(["Funcionamiento", "Datos usados IPC","Predecir IPC anual","Ver evolución"])
 
 with steps[0]:
     st.image("lr_theory.png")
 
 with steps[1]:
+    st.image("datos_ipc.png")
+
+with steps[2]:
     st.markdown("## Predicción del indice de precios al consumidor")
     year = st.number_input("Escoja un año", min_value=2026)
 
@@ -32,7 +35,7 @@ with steps[1]:
 
     if st.session_state["calcular"]: st.write(f"El IPC predicho para el año {year} es {valor_ipc_pred:.2f}")
 
-with steps[2]:
+with steps[3]:
 
     scatter_data = pd.read_csv('scatter_data.csv')
     years = scatter_data['x'].unique().reshape(-1,1)
