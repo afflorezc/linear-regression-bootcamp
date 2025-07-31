@@ -12,14 +12,17 @@ model = pickle.load(model_file)
 model_file.close()
 
 
-st.set_page_config(page_title="ML Regresión Lineal",layout="centered")
+st.set_page_config(page_title="ML Regresión Lineal: Minimos cuadrados",layout="centered")
 
 st.title("Modelo de Machine Learning")
-st.subheader("Regresión Lineal")
-steps = st.tabs(["Predecir IPC anual","Ver evolución"])
+st.subheader("Regresión Lineal: Mínimos cuadrados")
+steps = st.tabs(["Funcionamiento","Predecir IPC anual","Ver evolución"])
 
 with steps[0]:
-    st.markdown("##Predicción del indice de precios al consumidor")
+    st.image("lr_theory.png")
+
+with steps[1]:
+    st.markdown("## Predicción del indice de precios al consumidor")
     year = st.number_input("Escoja un año", min_value=2026)
 
     year_to_predict = np.array([year]).reshape(-1,1)
@@ -29,7 +32,7 @@ with steps[0]:
 
     if st.session_state["calcular"]: st.write(f"El IPC predicho para el año {year} es {valor_ipc_pred:.2f}")
 
-with steps[1]:
+with steps[2]:
 
     scatter_data = pd.read_csv('scatter_data.csv')
     years = scatter_data['x'].unique().reshape(-1,1)
